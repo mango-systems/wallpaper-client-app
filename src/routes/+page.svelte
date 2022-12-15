@@ -7,4 +7,5 @@
     <Greet />
     <WallList />
     <div class="h-48 w-full"></div>
+    <p  class="text-center pb-10">Made with ☕ by MSM</p>
 </div>

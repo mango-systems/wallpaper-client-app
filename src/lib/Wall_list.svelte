@@ -3,7 +3,7 @@
 
     let url = "https://raw.githubusercontent.com/msm-linux/msm-wallpaper-index-source/main/index.json"
 	
-    // let options = 
+    // let options = s
     let promise = fetch(url).then((res) => res.json())
 </script>
 
@@ -34,7 +34,7 @@
     
     {:catch error}
 		<div class="text-center w-full justify-center flex">
-			<div class="py-32">
+			<div class="p-32 w-full rounded ring-2 ring-red-500 font-mono text-red-500">
 				<h2>Oops: something went wrong...</h2>
 				<h3><strong>Please Refresh</strong></h3>
 				<code>{error}</code>

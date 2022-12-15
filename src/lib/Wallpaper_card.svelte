@@ -9,7 +9,7 @@
     class="w-full rounded bg-[#272727] hover:ring hovercard"
 >
     <div class="w-full">
-        <img class="w-full rounded-t" src={thumbnail} alt={name} />
+        <img draggable="false" class="w-full rounded-t" src={thumbnail} alt={name} />
     </div>
     <div class="w-full p-2">
         <h3 class="truncate mr-5 text-white mb-2 cardtitle">{name}</h3>

@@ -16,6 +16,8 @@ body{
 * {
     margin: 0;
     padding: 0;
+    user-select:none;
+    
 }
 
 h1 {
@@ -27,6 +29,16 @@ h1 {
 
 h2 {
     /* font-size: 15px; */
+}
+
+p{
+    font-family: monospace;
+    color: #838383;
+    font-size: medium;
+}
+
+h1, h2, h3, p{
+    cursor: context-menu;
 }
 
 .main-container{

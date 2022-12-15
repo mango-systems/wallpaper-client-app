@@ -2,7 +2,7 @@
   <div
     class="banner w-full flex flex-col rounded-md py-11 px-5 text-white bg-[#382353]"
   >
-    <img
+    <img draggable="false"
       class="w-24"
       src="https://cdn-icons-png.flaticon.com/512/2659/2659360.png"
       alt="logo"
