@@ -65,8 +65,7 @@
         "title": "MSM Wallpaper Client",
         "width": 1200,
         "center": true,
-        "theme":"Dark",
-        "acceptFirstMouse": false
+        "theme":"Dark"
       }
     ]
   }

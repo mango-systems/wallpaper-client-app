@@ -1,6 +1,9 @@
 <script>
   import Greet from "$lib/Greet.svelte";
   import WallList from "$lib/Wall_list.svelte";
+
+  // disable context menu
+  document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
 
 <div class="main-container w-screen h-screen px-[13%] pt-7">
