@@ -1,93 +1,97 @@
 {
-  "build": {
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build",
-    "devPath": "http://localhost:1420",
-    "distDir": "../build",
-    "withGlobalTauri": false
-  },
-  "package": {
-    "productName": "msm-wallpaper-client",
-    "version": "0.0.1"
-  },
-  "tauri": {
-    "allowlist": {
-      "all": false,
-      "shell": {
-        "all": false,
-        "open": true
-      },
-      "fs": {
-        "all": true,
-        "copyFile": false,
-        "createDir": false,
-        "exists": false,
-        "readDir": false,
-        "readFile": false,
-        "removeDir": false,
-        "removeFile": false,
-        "renameFile": false,
-        "scope": [
-          "$APPDATA/*"
-        ],
-        "writeFile": true
-      },
-      "notification": {
-        "all": true
-      },
-      "path": {
-        "all": true
-      }
-    },
-    "bundle": {
-      "active": true,
-      "category": "DeveloperTool",
-      "copyright": "",
-      "deb": {
-        "depends": []
-      },
-      "externalBin": [],
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ],
-      "identifier": "com.msmwallpaperclient.dev",
-      "longDescription": "",
-      "macOS": {
-        "entitlements": null,
-        "exceptionDomain": "",
-        "frameworks": [],
-        "providerShortName": null,
-        "signingIdentity": null
-      },
-      "resources": [],
-      "shortDescription": "",
-      "targets": "all",
-      "windows": {
-        "certificateThumbprint": null,
-        "digestAlgorithm": "sha256",
-        "timestampUrl": ""
-      }
-    },
-    "security": {
-      "csp": null
-    },
-    "updater": {
-      "active": false
-    },
-    "windows": [
-      {
-        "fullscreen": false,
-        "height": 700,
-        "resizable": true,
-        "title": "MSM Wallpaper Client",
-        "width": 1200,
-        "center": true,
-        "theme":"Dark"
-      }
-    ]
-  }
+	"build": {
+		"beforeDevCommand": "npm run dev",
+		"beforeBuildCommand": "npm run build",
+		"devPath": "http://localhost:1420",
+		"distDir": "../build",
+		"withGlobalTauri": false
+	},
+	"package": {
+		"productName": "msm-wallpaper-client",
+		"version": "0.0.1"
+	},
+	"tauri": {
+		"allowlist": {
+			"all": false,
+			"fs": {
+				"all": true,
+				"copyFile": false,
+				"createDir": false,
+				"exists": false,
+				"readDir": false,
+				"readFile": false,
+				"removeDir": false,
+				"removeFile": false,
+				"renameFile": false,
+				"scope": ["$DOWNLOAD/*"],
+				"writeFile": true
+			},
+			"notification": {
+				"all": true
+			},
+			"shell": {
+				"all": true,
+				"scope": [
+					{
+						"name": "gnome-wallpaper-dark",
+						"cmd": "gsettings",
+						"args": ["set", "org.gnome.desktop.background", "picture-uri-dark", { "validator": "\\S+" }]
+					},
+          {
+						"name": "win-set",
+						"cmd": "Set-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop\\' -Name 'Wallpaper' -Value",
+						"args": [{ "validator": "\\S+" }]
+					},
+
+				]
+			},
+			"path": {
+				"all": true
+			}
+		},
+		"bundle": {
+			"active": true,
+			"category": "DeveloperTool",
+			"copyright": "",
+			"deb": {
+				"depends": []
+			},
+			"externalBin": [],
+			"icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
+			"identifier": "com.msmwallpaperclient.dev",
+			"longDescription": "",
+			"macOS": {
+				"entitlements": null,
+				"exceptionDomain": "",
+				"frameworks": [],
+				"providerShortName": null,
+				"signingIdentity": null
+			},
+			"resources": [],
+			"shortDescription": "",
+			"targets": "all",
+			"windows": {
+				"certificateThumbprint": null,
+				"digestAlgorithm": "sha256",
+				"timestampUrl": ""
+			}
+		},
+		"security": {
+			"csp": null
+		},
+		"updater": {
+			"active": false
+		},
+		"windows": [
+			{
+				"fullscreen": false,
+				"height": 700,
+				"resizable": true,
+				"title": "MSM Wallpaper Client",
+				"width": 1200,
+				"center": true,
+				"theme": "Dark"
+			}
+		]
+	}
 }
