@@ -12,7 +12,7 @@
 	// }
 </script>
 <!-- <button class="bg-slate-500 rounded px-3 py-5" on:click={() => {handleReload}}>Reload</button> -->
-<div class="w-full rounded-md mt-3 p-4">
+<div class="w-full rounded-md p-4">
     {#await promise}
 		<script
 			async
