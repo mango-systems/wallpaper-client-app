@@ -137,8 +137,8 @@
 		// '${wallpaper_file_path}'`
 		// UNTESTED
 		const downloadDirPath = await downloadDir();
-		const wallpaper_file_path = `${downloadDirPath}/${downloadFolderName}/${filename}`;
-
+		const wallpaper_file_path = `${downloadDirPath}${downloadFolderName}\\${filename}`;
+		console.log(wallpaper_file_path)
 		async function setWallpaper() {
 			// UNTESTED
 			const wallpaperCommand = Command.sidecar('binaries/setWinWallpaper', [`${wallpaper_file_path}`]);

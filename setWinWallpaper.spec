@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['src-tauri/uncompiled-binaries/setWinWallpaper.py'],
+    ['C:\\Users\\msm74\\Documents\\wallpaper-client-app\\src-tauri\\uncompiled-binaries\\setWinWallpaper.py'],
     pathex=[],
     binaries=[],
     datas=[],
