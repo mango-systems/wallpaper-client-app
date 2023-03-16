@@ -141,7 +141,7 @@
 
 		async function setWallpaper() {
 			// UNTESTED
-			const wallpaperCommand = Command.sidecar('binaries/setWinWallpaper', [`'${wallpaper_file_path}'`]);
+			const wallpaperCommand = Command.sidecar('binaries/setWinWallpaper', [`${wallpaper_file_path}`]);
 			// d.writeConfig("Image", "file:///path/to/image.jpg")}'
 			// qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
 

@@ -30,7 +30,7 @@ else
   build_binaries
 fi
  
-# npm run tauri build
+npm run tauri build
 
 # add compiled binaries to .gitignore as they are platform specific
 
