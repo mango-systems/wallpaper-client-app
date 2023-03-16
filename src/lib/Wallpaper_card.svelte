@@ -17,7 +17,6 @@
 		console.log(appDir);
 	};
 
-
 	/**
 	 * @param {string} link
 	 */
@@ -107,19 +106,18 @@
 		}
 	}
 
-  // async function setKDEwallpaper() {
-  //   // WILL NOT WORK!
+	// async function setKDEwallpaper() {
+	//   // WILL NOT WORK!
 
 	// 	const downloadDirPath = await downloadDir();
 	// 	const wallpaper_file_path = `file://${downloadDirPath}/${downloadFolderName}/${filename}`;
 
 	// 	async function setWallpaper() {
-  //     // UNTESTED
+	//     // UNTESTED
 
 	// 		const wallpaperCommand = new Command('kde-wallpaper-set', [`d.writeConfig(\"Image\", "${wallpaper_file_path}")}`]);
-  //     // d.writeConfig("Image", "file:///path/to/image.jpg")}'
-  //     // qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
-
+	//     // d.writeConfig("Image", "file:///path/to/image.jpg")}'
+	//     // qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
 
 	// 		const child = await wallpaperCommand.spawn();
 	// 		console.log('pid:', child.pid);
@@ -135,18 +133,17 @@
 	// 	}
 	// }
 
-  async function setWinwallpaper() {
-    // '${wallpaper_file_path}'`
-    // UNTESTED
+	async function setWinwallpaper() {
+		// '${wallpaper_file_path}'`
+		// UNTESTED
 		const downloadDirPath = await downloadDir();
-		const wallpaper_file_path = `file://${downloadDirPath}/${downloadFolderName}/${filename}`;
+		const wallpaper_file_path = `${downloadDirPath}/${downloadFolderName}/${filename}`;
 
 		async function setWallpaper() {
-      // UNTESTED
-			const wallpaperCommand = new Command('win-set', [`'${wallpaper_file_path}'`]);
-      // d.writeConfig("Image", "file:///path/to/image.jpg")}'
-      // qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
-
+			// UNTESTED
+			const wallpaperCommand = Command.sidecar('binaries/setWinWallpaper', [`'${wallpaper_file_path}'`]);
+			// d.writeConfig("Image", "file:///path/to/image.jpg")}'
+			// qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
 
 			const child = await wallpaperCommand.spawn();
 			console.log('pid:', child.pid);

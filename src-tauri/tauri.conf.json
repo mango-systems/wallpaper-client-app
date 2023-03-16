@@ -31,18 +31,19 @@
 			},
 			"shell": {
 				"all": true,
+				"sidecar": true,
 				"scope": [
 					{
 						"name": "gnome-wallpaper-dark",
 						"cmd": "gsettings",
 						"args": ["set", "org.gnome.desktop.background", "picture-uri-dark", { "validator": "\\S+" }]
 					},
-          {
+					{
 						"name": "win-set",
 						"cmd": "Set-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop\\' -Name 'Wallpaper' -Value",
 						"args": [{ "validator": "\\S+" }]
-					}
-
+					},
+					{ "name": "binaries/setWinWallpaper", "sidecar": true, "args": [{ "validator": "\\S+" }] }
 				]
 			},
 			"path": {
@@ -56,7 +57,7 @@
 			"deb": {
 				"depends": []
 			},
-			"externalBin": [],
+			"externalBin": ["binaries/setWinWallpaper"],
 			"icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
 			"identifier": "com.msmwallpaperclient.dev",
 			"longDescription": "",
