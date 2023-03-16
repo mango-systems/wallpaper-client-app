@@ -16,6 +16,27 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "fs": {
+        "all": true,
+        "copyFile": false,
+        "createDir": false,
+        "exists": false,
+        "readDir": false,
+        "readFile": false,
+        "removeDir": false,
+        "removeFile": false,
+        "renameFile": false,
+        "scope": [
+          "$APPDATA/*"
+        ],
+        "writeFile": true
+      },
+      "notification": {
+        "all": true
+      },
+      "path": {
+        "all": true
       }
     },
     "bundle": {

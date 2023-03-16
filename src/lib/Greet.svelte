@@ -9,6 +9,6 @@
     />
     <h1>MSM wallpaper Client</h1>
     <h2>Version 0.1 beta</h2>
-    <a target="_blank" href="https://github.com/msm-linux/msm-wallpaper-index-source"><p><u>Open wallpaper repo</u></p></a>
+    <a target="_blank" rel="noreferrer" href="https://github.com/msm-linux/msm-wallpaper-index-source"><p><u>Open wallpaper repo</u></p></a>
   </div>
 </div>
