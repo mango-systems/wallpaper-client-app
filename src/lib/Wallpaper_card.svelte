@@ -59,7 +59,7 @@
 
 		let doesFileExists = await exists(`${downloadFolderName}/${filename}`, { dir: BaseDirectory.Download });
 
-		async function downloadfile() {
+		async function downloadFile() {
 			if (doesFileExists) {
 				console.log('image exists, thus not downloading');
 			} else {
@@ -71,11 +71,11 @@
 
 		if (doesDownloadFolderExists) {
 			console.log('folder exists, writing to folder');
-			downloadfile();
+			downloadFile();
 		} else {
 			console.log('folder Does not exist, creating folder');
 			await createDir(downloadFolderName, { dir: BaseDirectory.Download, recursive: true });
-			downloadfile();
+			downloadFile();
 		}
 
 		// await writeBinaryFile(
@@ -91,10 +91,10 @@
 		const wallpaper_file_path = `file://${downloadDirPath}/${downloadFolderName}/${filename}`;
 
 		async function setWallpaper() {
-			const wallpapercommand = new Command('gnome-wallpaper-dark', ['set', 'org.gnome.desktop.background', 'picture-uri', wallpaper_file_path]);
-			const wallpapercommanddark = new Command('gnome-wallpaper-dark', ['set', 'org.gnome.desktop.background', 'picture-uri-dark', wallpaper_file_path]);
-			const child = await wallpapercommand.spawn();
-			const childdark = await wallpapercommanddark.spawn();
+			const wallpaperCommand = new Command('gnome-wallpaper-dark', ['set', 'org.gnome.desktop.background', 'picture-uri', wallpaper_file_path]);
+			const wallpaperCommandDark = new Command('gnome-wallpaper-dark', ['set', 'org.gnome.desktop.background', 'picture-uri-dark', wallpaper_file_path]);
+			const child = await wallpaperCommand.spawn();
+			const childDark = await wallpaperCommandDark.spawn();
 		}
 
 		let doesFileExists = await exists(`${downloadFolderName}/${filename}`, { dir: BaseDirectory.Download });
@@ -116,12 +116,12 @@
 	// 	async function setWallpaper() {
   //     // UNTESTED
 
-	// 		const wallpapercommand = new Command('kde-wallpaper-set', [`d.writeConfig(\"Image\", "${wallpaper_file_path}")}`]);
+	// 		const wallpaperCommand = new Command('kde-wallpaper-set', [`d.writeConfig(\"Image\", "${wallpaper_file_path}")}`]);
   //     // d.writeConfig("Image", "file:///path/to/image.jpg")}'
   //     // qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
 
 
-	// 		const child = await wallpapercommand.spawn();
+	// 		const child = await wallpaperCommand.spawn();
 	// 		console.log('pid:', child.pid);
 	// 	}
 
@@ -143,12 +143,12 @@
 
 		async function setWallpaper() {
       // UNTESTED
-			const wallpapercommand = new Command('win-set', [`'${wallpaper_file_path}'`]);
+			const wallpaperCommand = new Command('win-set', [`'${wallpaper_file_path}'`]);
       // d.writeConfig("Image", "file:///path/to/image.jpg")}'
       // qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
 
 
-			const child = await wallpapercommand.spawn();
+			const child = await wallpaperCommand.spawn();
 			console.log('pid:', child.pid);
 		}
 
