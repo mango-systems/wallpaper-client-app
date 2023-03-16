@@ -41,7 +41,7 @@
 						"name": "win-set",
 						"cmd": "Set-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop\\' -Name 'Wallpaper' -Value",
 						"args": [{ "validator": "\\S+" }]
-					},
+					}
 
 				]
 			},
