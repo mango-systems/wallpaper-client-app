@@ -29,3 +29,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+/src-tauri/uncompiled-binaries/build_files
+build_files.spec
