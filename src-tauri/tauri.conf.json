@@ -7,8 +7,8 @@
 		"withGlobalTauri": false
 	},
 	"package": {
-		"productName": "msm-wallpaper-client",
-		"version": "0.0.1"
+		"productName": "MSM Wallpaper Browser",
+		"version": "0.1.0"
 	},
 	"tauri": {
 		"allowlist": {
