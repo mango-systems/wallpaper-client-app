@@ -86,16 +86,20 @@ button.card-button:active {
 
 .buttongroup {
   display: none;
+
   /* visibility: hidden; */
   /* transition: 0.3s; */
 }
 
 .hovercard:hover .buttongroup {
   display: block;
+  
+  
   /* visibility: visible; */
 }
 
 .hovercard:hover .cardtitle {
+  
   text-decoration: underline;
   text-decoration-color: coral;
   text-decoration-thickness: 5px;
@@ -116,6 +120,8 @@ button.card-button:active {
 }
 
 .hovercard:hover {
+
+  
   position: absolute;
   z-index: 99;
   /* scale: 1.05; */

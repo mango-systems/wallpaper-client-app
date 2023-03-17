@@ -23,7 +23,7 @@
 		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "^1.11.0",
 		"@tauri-apps/cli": "^1.2.2",
-		"@tauri-apps/cli-win32-x64-msvc": "^1.0.0-rc.13",
+		"@tauri-apps/cli-win32-x64-msvc": "^1.2.3",
 		"autoprefixer": "^10.4.13",
 		"postcss": "^8.4.20",
 		"svelte": "^3.54.0",
