@@ -32,3 +32,4 @@ dist-ssr
 
 /src-tauri/uncompiled-binaries/build_files
 build_files.spec
+/output-executables
