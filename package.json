@@ -11,7 +11,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"tauri-dev": "npm run tauri dev --ignore-platform",
 		"tauri": "tauri",
-		"build-pkgs" : "npm run tauri dev && npm run copy-to-output",
+		"build-pkgs" : "npm run tauri build && npm run copy-to-output",
 		"copy-to-output": "npm-run-all check-output copy-deb copy-appimage copy-msi",
 		"check-output": "test -d output-executables || mkdir output-executables",
 		"copy-deb": "cp ./src-tauri/target/release/bundle/deb/*.deb ./output-executables/ || true",
