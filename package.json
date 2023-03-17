@@ -9,7 +9,7 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
-		"tauri-dev" : "npm run tauri dev --ignore-platform",
+		"tauri-dev": "npm run tauri dev --ignore-platform",
 		"tauri": "tauri",
 		"copy-to-output": "npm-run-all check-output copy-deb copy-appimage copy-msi",
 		"check-output": "test -d output-executables || mkdir output-executables",
@@ -20,7 +20,8 @@
 	"dependencies": {
 		"@tauri-apps/api": "^1.2.0",
 		"npm-run-all": "^4.1.5",
-		"prettier-plugin-svelte": "^2.9.0"
+		"prettier-plugin-svelte": "^2.9.0",
+		"toastify-js": "^1.12.0"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "next",

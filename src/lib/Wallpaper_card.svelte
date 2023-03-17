@@ -6,6 +6,9 @@
 	import { Command } from '@tauri-apps/api/shell';
 	import { isPermissionGranted, requestPermission, sendNotification } from '@tauri-apps/api/notification';
 
+	import Toastify from 'toastify-js';
+	import '$lib/assets/css/toastify.css';
+
 	export let thumbnail = '';
 	export let name = '';
 	export let full_res = '';
@@ -16,6 +19,15 @@
 		const appDir = await appDataDir();
 		console.log(appDir);
 	};
+
+	function toast(content) {
+		Toastify({
+			text: content,
+			gravity: 'bottom',
+			position: 'center',
+			close : true
+		}).showToast();
+	}
 
 	/**
 	 * @param {string} link
@@ -37,7 +49,8 @@
 		}
 		if (permissionGranted) {
 			// sendNotification('Tauri is awesome!');
-			sendNotification({ title: 'MSM Wallpaper Client', body: `Downloading wallpaper: ${name}` });
+			// sendNotification({ title: 'MSM Wallpaper Client', body: `Downloading wallpaper: ${name}` });
+			toast('Downloading Wallpaper...');
 		}
 
 		console.log('Download Image function RAN');
@@ -64,10 +77,11 @@
 			} else {
 				await writeBinaryFile({ path: `${downloadFolderName}/${filename}`, contents: new Uint8Array(arrayBuffer) }, { dir: BaseDirectory.Download }).then(() => {
 					sendNotification({ title: 'MSM Wallpaper Client', body: `Download Complete Wallpaper: ${filename}` });
+					// console.log('FUNCTION');
+					toast('Wallpaper downloaded');
 				});
 			}
 		}
-
 		if (doesDownloadFolderExists) {
 			console.log('folder exists, writing to folder');
 			downloadFile();
@@ -92,8 +106,14 @@
 		async function setWallpaper() {
 			const wallpaperCommand = new Command('gnome-wallpaper-dark', ['set', 'org.gnome.desktop.background', 'picture-uri', wallpaper_file_path]);
 			const wallpaperCommandDark = new Command('gnome-wallpaper-dark', ['set', 'org.gnome.desktop.background', 'picture-uri-dark', wallpaper_file_path]);
+
+			wallpaperCommand.on('close', () => {
+				toast("Wallpaper set")
+			});
+
 			const child = await wallpaperCommand.spawn();
 			const childDark = await wallpaperCommandDark.spawn();
+			
 		}
 
 		let doesFileExists = await exists(`${downloadFolderName}/${filename}`, { dir: BaseDirectory.Download });
@@ -106,49 +126,20 @@
 		}
 	}
 
-	// async function setKDEwallpaper() {
-	//   // WILL NOT WORK!
-
-	// 	const downloadDirPath = await downloadDir();
-	// 	const wallpaper_file_path = `${downloadDirPath}/${downloadFolderName}/${filename}`;
-
-	// 	async function setWallpaper() {
-	//     // UNTESTED
-	// 		console.log(`kde wallpaper path : ${wallpaper_file_path}`)
-	// 		const wallpaperCommand = new Command('kde-set', [`${wallpaper_file_path}`]);
-	//     // d.writeConfig("Image", "file:///path/to/image.jpg")}'
-	//     // qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
-
-	// 		const child = await wallpaperCommand.spawn();
-	// 		console.log('pid:', child.pid);
-	// 	}
-
-	// 	let doesFileExists = await exists(`${downloadFolderName}/${filename}`, { dir: BaseDirectory.Download });
-	// 	if (doesFileExists) {
-	// 		setWallpaper();
-	// 	} else {
-	// 		console.log('file not found, downloading, then setting as wallpaper');
-	// 		await downloadImage();
-	// 		setWallpaper();
-	// 	}
-	// }
-
 	async function setKDEwallpaper() {
 		// '${wallpaper_file_path}'`
 		// UNTESTED
 		const downloadDirPath = await downloadDir();
 		const wallpaper_file_path = `${downloadDirPath}${downloadFolderName}/${filename}`;
-		console.log(wallpaper_file_path)
+		console.log(wallpaper_file_path);
 		async function setWallpaper() {
-			// UNTESTED
 			const wallpaperCommandKDE = new Command('kde-set', [`${wallpaper_file_path}`]);
-			// d.writeConfig("Image", "file:///path/to/image.jpg")}'
-			// qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
-
+			wallpaperCommand.on('close', () => {
+				toast("Wallpaper set")
+			});
 			const child = await wallpaperCommandKDE.spawn();
 			console.log('pid:', child.pid);
 		}
-
 		let doesFileExists = await exists(`${downloadFolderName}/${filename}`, { dir: BaseDirectory.Download });
 		if (doesFileExists) {
 			setWallpaper();
@@ -164,13 +155,16 @@
 		// UNTESTED
 		const downloadDirPath = await downloadDir();
 		const wallpaper_file_path = `${downloadDirPath}${downloadFolderName}\\${filename}`;
-		console.log(wallpaper_file_path)
+		console.log(wallpaper_file_path);
 		async function setWallpaper() {
 			// UNTESTED
 			const wallpaperCommand = Command.sidecar('binaries/setWinWallpaper', [`${wallpaper_file_path}`]);
+			
 			// d.writeConfig("Image", "file:///path/to/image.jpg")}'
 			// qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
-
+			wallpaperCommand.on('close', () => {
+				toast("Wallpaper set")
+			});
 			const child = await wallpaperCommand.spawn();
 			console.log('pid:', child.pid);
 		}
@@ -184,8 +178,6 @@
 			setWallpaper();
 		}
 	}
-
-
 </script>
 
 <div class="relative">
@@ -200,7 +192,7 @@
             <button>Download Test</button>
         </a> -->
 				<button class="card-button" on:click={setGNOMEwallpaper}>Set wallpaper GNOME</button>
-				<button class="card-button" on:click={setKDEwallpaper}>Set wallpaper KDE</button>	
+				<button class="card-button" on:click={setKDEwallpaper}>Set wallpaper KDE</button>
 				<button class="card-button" on:click={setWinwallpaper}>Set wallpaper Windows</button>
 				<!-- <button class="card-button" on:click={currentDir}>test dir</button> -->
 				<button class="card-button" on:click={downloadImage}>Just Download</button>

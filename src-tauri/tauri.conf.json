@@ -52,7 +52,7 @@
 		},
 		"bundle": {
 			"active": true,
-			"category": "DeveloperTool",
+			"category": "Utility",
 			"copyright": "",
 			"deb": {
 				"depends": []
@@ -69,13 +69,14 @@
 				"signingIdentity": null
 			},
 			"resources": [],
-			"shortDescription": "",
+			"shortDescription": "Client app to browse wallpaper collection of MSM",
 			"targets": "all",
 			"windows": {
 				"certificateThumbprint": null,
 				"digestAlgorithm": "sha256",
 				"timestampUrl": ""
 			}
+
 		},
 		"security": {
 			"csp": null
