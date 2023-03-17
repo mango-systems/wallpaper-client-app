@@ -1,32 +1,36 @@
 {
-  "name": "msm-wallpaper-client",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
-    "tauri": "tauri"
-  },
-  "dependencies": {
-    "@tauri-apps/api": "^1.2.0",
-    "prettier-plugin-svelte": "^2.9.0"
-  },
-  "devDependencies": {
-    "@sveltejs/adapter-static": "next",
-    "@sveltejs/kit": "^1.11.0",
-    "@tauri-apps/cli": "^1.2.2",
-    "@tauri-apps/cli-win32-x64-msvc": "^1.0.0-rc.13",
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.20",
-    "svelte": "^3.54.0",
-    "svelte-check": "^2.9.2",
-    "svelte-preprocess": "^5.0.0",
-    "tailwindcss": "^3.2.7",
-    "typescript": "^4.8.4",
-    "vite": "^4.0.0"
-  }
+	"name": "msm-wallpaper-client",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+		"tauri": "tauri",
+		"copy-to-output": "npm-run-all check-output copy-deb copy-appimage",
+		"check-output": "test -d output-executables || mkdir output-executables",
+		"copy-deb": "cp ./src-tauri/target/release/bundle/deb/*.deb ./output-executables/",
+		"copy-appimage": "cp src-tauri/target/release/bundle/appimage/*.appimage ./output-executables/"
+	},
+	"dependencies": {
+		"@tauri-apps/api": "^1.2.0",
+		"prettier-plugin-svelte": "^2.9.0"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-static": "next",
+		"@sveltejs/kit": "^1.11.0",
+		"@tauri-apps/cli": "^1.2.2",
+		"@tauri-apps/cli-win32-x64-msvc": "^1.0.0-rc.13",
+		"autoprefixer": "^10.4.13",
+		"postcss": "^8.4.20",
+		"svelte": "^3.54.0",
+		"svelte-check": "^2.9.2",
+		"svelte-preprocess": "^5.0.0",
+		"tailwindcss": "^3.2.7",
+		"typescript": "^4.8.4",
+		"vite": "^4.0.0"
+	}
 }
