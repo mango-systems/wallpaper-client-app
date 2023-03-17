@@ -14,7 +14,7 @@
 		"copy-to-output": "npm-run-all check-output copy-deb copy-appimage copy-msi",
 		"check-output": "test -d output-executables || mkdir output-executables",
 		"copy-deb": "cp ./src-tauri/target/release/bundle/deb/*.deb ./output-executables/ || true",
-		"copy-appimage": "cp ./src-tauri/target/release/bundle/appimage/*.appimage ./output-executables/ || true",
+		"copy-appimage": "cp ./src-tauri/target/release/bundle/appimage/*.AppImage ./output-executables/ || true",
 		"copy-msi": "cp ./src-tauri/target/release/bundle/msi/*.msi ./output-executables/ || true"
 	},
 	"dependencies": {
