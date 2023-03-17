@@ -9,6 +9,7 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+		"tauri-dev" : "npm run tauri dev --ignore-platform",
 		"tauri": "tauri",
 		"copy-to-output": "npm-run-all check-output copy-deb copy-appimage copy-msi",
 		"check-output": "test -d output-executables || mkdir output-executables",
