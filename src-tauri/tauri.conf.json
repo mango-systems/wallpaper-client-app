@@ -39,8 +39,8 @@
 						"args": ["set", "org.gnome.desktop.background", "picture-uri-dark", { "validator": "\\S+" }]
 					},
 					{
-						"name": "win-set",
-						"cmd": "Set-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop\\' -Name 'Wallpaper' -Value",
+						"name": "kde-set",
+						"cmd": "plasma-apply-wallpaperimage",
 						"args": [{ "validator": "\\S+" }]
 					},
 					{ "name": "binaries/setWinWallpaper", "sidecar": true, "args": [{ "validator": "\\S+" }] }

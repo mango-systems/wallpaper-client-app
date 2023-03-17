@@ -110,12 +110,12 @@
 	//   // WILL NOT WORK!
 
 	// 	const downloadDirPath = await downloadDir();
-	// 	const wallpaper_file_path = `file://${downloadDirPath}/${downloadFolderName}/${filename}`;
+	// 	const wallpaper_file_path = `${downloadDirPath}/${downloadFolderName}/${filename}`;
 
 	// 	async function setWallpaper() {
 	//     // UNTESTED
-
-	// 		const wallpaperCommand = new Command('kde-wallpaper-set', [`d.writeConfig(\"Image\", "${wallpaper_file_path}")}`]);
+	// 		console.log(`kde wallpaper path : ${wallpaper_file_path}`)
+	// 		const wallpaperCommand = new Command('kde-set', [`${wallpaper_file_path}`]);
 	//     // d.writeConfig("Image", "file:///path/to/image.jpg")}'
 	//     // qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
 
@@ -132,6 +132,32 @@
 	// 		setWallpaper();
 	// 	}
 	// }
+
+	async function setKDEwallpaper() {
+		// '${wallpaper_file_path}'`
+		// UNTESTED
+		const downloadDirPath = await downloadDir();
+		const wallpaper_file_path = `${downloadDirPath}${downloadFolderName}/${filename}`;
+		console.log(wallpaper_file_path)
+		async function setWallpaper() {
+			// UNTESTED
+			const wallpaperCommandKDE = new Command('kde-set', [`${wallpaper_file_path}`]);
+			// d.writeConfig("Image", "file:///path/to/image.jpg")}'
+			// qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
+
+			const child = await wallpaperCommandKDE.spawn();
+			console.log('pid:', child.pid);
+		}
+
+		let doesFileExists = await exists(`${downloadFolderName}/${filename}`, { dir: BaseDirectory.Download });
+		if (doesFileExists) {
+			setWallpaper();
+		} else {
+			console.log('file not found, downloading, then setting as wallpaper');
+			await downloadImage();
+			setWallpaper();
+		}
+	}
 
 	async function setWinwallpaper() {
 		// '${wallpaper_file_path}'`
@@ -159,10 +185,7 @@
 		}
 	}
 
-	async function currentDir() {
-		const downloadDirPath = await downloadDir();
-		console.log(downloadDirPath);
-	}
+
 </script>
 
 <div class="relative">
@@ -177,7 +200,7 @@
             <button>Download Test</button>
         </a> -->
 				<button class="card-button" on:click={setGNOMEwallpaper}>Set wallpaper GNOME</button>
-				<!-- <button class="card-button" on:click={setKDEwallpaper}>Set wallpaper KDE</button> -->
+				<button class="card-button" on:click={setKDEwallpaper}>Set wallpaper KDE</button>	
 				<button class="card-button" on:click={setWinwallpaper}>Set wallpaper Windows</button>
 				<!-- <button class="card-button" on:click={currentDir}>test dir</button> -->
 				<button class="card-button" on:click={downloadImage}>Just Download</button>
