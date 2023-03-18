@@ -16,8 +16,8 @@
 				<div class="code">
 					<code class="select-text"
 						>chmod +x build.py<br />
-						python3 build.py</code
-					>
+						python3 build.py
+					</code>
 				</div>
 			</li>
 			<li>
@@ -34,7 +34,7 @@
 	</div>
 </div>
 
-<style>
+<style scoped>
 	h2 {
 		font-size: medium;
 		font-weight: bold;
