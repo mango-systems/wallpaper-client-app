@@ -48,7 +48,18 @@
 			},
 			"path": {
 				"all": true
-			}
+			},
+			"window": {
+				"all": false,
+				"close": true,
+				"hide": true,
+				"show": true,
+				"maximize": true,
+				"minimize": true,
+				"unmaximize": true,
+				"unminimize": true,
+				"startDragging": true
+			  }
 		},
 		"bundle": {
 			"active": true,
@@ -87,12 +98,15 @@
 		"windows": [
 			{
 				"fullscreen": false,
-				"height": 700,
+				"height": 800,
 				"resizable": true,
 				"title": "MSM Wallpaper Client",
-				"width": 1200,
+				"width": 1100,
 				"center": true,
-				"theme": "Dark"
+				"theme": "Dark",
+				"transparent": true,
+				"decorations": false,
+				"minWidth": 300
 			}
 		]
 	}
