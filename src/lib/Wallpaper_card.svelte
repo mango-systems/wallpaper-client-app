@@ -134,7 +134,7 @@
 		console.log(wallpaper_file_path);
 		async function setWallpaper() {
 			const wallpaperCommandKDE = new Command('kde-set', [`${wallpaper_file_path}`]);
-			wallpaperCommand.on('close', () => {
+			wallpaperCommandKDE.on('close', () => {
 				toast("Wallpaper set")
 			});
 			const child = await wallpaperCommandKDE.spawn();
