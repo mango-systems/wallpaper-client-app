@@ -3,7 +3,7 @@
 
 	const subreddit = "r/wallpaper"
 	const sort = "hot"
-	let url = `https://www.reddit.com/${subreddit}.json?sort=${sort}`;
+	let url = `https://www.reddit.com/${subreddit}.json?sort=${sort}`
 
 	// let options = s
 	let promise = fetch(url).then((res) => res.json());
@@ -30,7 +30,8 @@
 			<!-- {#each Object.values(data) as item} -->
 			{#each data.data.children as item}
 				<!-- {console.log(item.data.is_gallery)} -->
-				{#if !item.data.is_gallery && !item.data.url_overridden_by_dest.includes("gallery")}
+				{#if !item.data.is_gallery}
+				<!-- {#if !item.data.is_gallery && !item.data.url_overridden_by_dest.includes("gallery")} -->
 				<!-- {#if !item.data.is_gallery && !item.data.url_overridden_by_dest.includes("gallery") && item.data.thumbnail} -->
 
 					<!-- {item.data.thumbnail} -->
