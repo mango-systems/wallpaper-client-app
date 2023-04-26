@@ -1,7 +1,9 @@
 <script>
 	import WallpaperCard from './Wallpaper_card.svelte';
 
-	let url = 'https://www.reddit.com/r/wallpaper.json?sort=hot';
+	const subreddit = "r/wallpaper"
+	const sort = "hot"
+	let url = `https://www.reddit.com/${subreddit}.json?sort=${sort}`;
 
 	// let options = s
 	let promise = fetch(url).then((res) => res.json());
@@ -19,12 +21,19 @@
 		<div class="flex justify-center w-full">
 			<lottie-player src="https://assets6.lottiefiles.com/packages/lf20_dkz94xcg.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay />
 		</div>
+		<div class="text-center animate-pulse">
+			<h1>Loading...</h1>
+		</div>
 	{:then data}
+		<!-- {console.log(data)} -->
 		<div class="card-grid">
 			<!-- {#each Object.values(data) as item} -->
 			{#each data.data.children as item}
 				<!-- {console.log(item.data.is_gallery)} -->
 				{#if !item.data.is_gallery && !item.data.url_overridden_by_dest.includes("gallery")}
+				<!-- {#if !item.data.is_gallery && !item.data.url_overridden_by_dest.includes("gallery") && item.data.thumbnail} -->
+
+					<!-- {item.data.thumbnail} -->
 					<WallpaperCard thumbnail={item.data.thumbnail} name={item.data.title} full_res={item.data.url_overridden_by_dest} />
 				{/if}
 			{/each}
