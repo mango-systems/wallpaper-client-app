@@ -21,3 +21,8 @@ This template should help get you started developing with Tauri and Svelte-Kit i
     chmod +x build.sh
     ./build.sh
 ```
+
+## To-Do
+
+Replace python executable with golang executable using wallpaper lib
+[Wallpaper library Golang](https://github.com/reujab/wallpaper)
