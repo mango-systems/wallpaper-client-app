@@ -3,7 +3,7 @@
 	import { appWindow } from '@tauri-apps/api/window';
 	// import Datepicker from 'flowbite-datepicker/Datepicker';
 	import '../app.css';
-  import Overlay from '$lib/Overlay.svelte';
+	import Overlay from '$lib/Overlay.svelte';
 
 	// const datepickerEl = document.getElementById('datepickerId');
 	// new Datepicker(datepickerEl, {
@@ -101,7 +101,7 @@
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					id="minimise"
-					class="w-6 bg-buttonbg aspect-square rounded-full duration-150 hover:bg-buttonbghover flex align-middle justify-center"
+					class="w-6 bg-buttonbg aspect-square rounded-full duration-150 hover:bg-buttonbghover flex align-middle justify-center p-[3px]"
 					on:click={() => {
 						appWindow.minimize();
 					}}
@@ -111,7 +111,7 @@
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					id="maximise"
-					class="w-6 bg-buttonbg aspect-square rounded-full duration-150 hover:bg-buttonbghover  flex align-middle justify-center"
+					class="w-6 bg-buttonbg aspect-square rounded-full duration-150 hover:bg-buttonbghover  flex align-middle justify-center p-[3px]"
 					on:click={() => {
 						appWindow.toggleMaximize();
 						checkWindowMaximizedStatus();
@@ -126,7 +126,7 @@
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					id="close"
-					class="w-6 bg-buttonbg aspect-square rounded-full duration-150 hover:bg-buttonbghover  flex align-middle justify-center"
+					class="w-6 bg-buttonbg aspect-square rounded-full duration-150 hover:bg-buttonbghover  flex align-middle justify-center p-[3px]"
 					on:click={() => {
 						appWindow.close();
 					}}

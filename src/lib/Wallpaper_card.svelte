@@ -6,6 +6,8 @@
 	import { Command } from '@tauri-apps/api/shell';
 	import { isPermissionGranted, requestPermission, sendNotification } from '@tauri-apps/api/notification';
 
+	import { invoke } from '@tauri-apps/api/tauri'
+
 	import Toastify from 'toastify-js';
 	import '$lib/assets/css/toastify.css';
 
@@ -13,7 +15,7 @@
 	export let name = '';
 	export let full_res = '';
 
-	const downloadFolderName = 'wallpapers-msm-app-test';
+const downloadFolderName = 'wallpapers-msm-app-test';
 
 	const appDirectory = async () => {
 		const appDir = await appDataDir();
@@ -158,13 +160,19 @@
 		console.log(wallpaper_file_path);
 		async function setWallpaper() {
 			// UNTESTED
-			const wallpaperCommand = Command.sidecar('binaries/setWinWallpaper', [`${wallpaper_file_path}`]);
+			// MODIFY THIS: const wallpaperCommand = Command.sidecar('binaries/setWinWallpaper', [`${wallpaper_file_path}`]);
+
+			// # RUST CALL FUNCTION
 			
+			invoke('set_wallpaper' , { wallpaperPath: wallpaper_file_path })
+
 			// d.writeConfig("Image", "file:///path/to/image.jpg")}'
 			// qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "file:///path/to/image.jpg")}'
-			wallpaperCommand.on('close', () => {
-				toast("Wallpaper set")
-			});
+			
+			
+			// wallpaperCommand.on('close', () => {
+			// 	toast("Wallpaper set")
+			// });
 			const child = await wallpaperCommand.spawn();
 			console.log('pid:', child.pid);
 		}
